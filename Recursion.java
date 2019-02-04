@@ -8,10 +8,11 @@ public class Recursion{
         System.out.println(fibonacci(6));
         */
 
+        
         int[] nums = {0, 1, 2, 3, 4, 5, 6, 7};
         System.out.println(binarySearch(nums, 6, 0, nums.length));
 
-        System.out.println(reverse("TESTING"));
+        //System.out.println(reverse("TESTING"));
     }
 
     public static int fibonacci(int n){
@@ -25,8 +26,11 @@ public class Recursion{
     }
 
     public static boolean binarySearch(int[] nums, int num, int start, int end){
+
         //int end is not inclusive, int start is inclusive
-        int center = (start + (end - start)) / 2;
+        int center = start + ((end - start) / 2);
+
+        System.out.println("num: " + num + ", start: " + start + ", end: " + end + ", center: " + center);
         
         //Base case
         System.out.println("Checking center: nums[" + center + "]: " + nums[center]);
