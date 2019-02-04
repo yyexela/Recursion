@@ -27,7 +27,8 @@ public class Recursion{
     public static boolean testReverse(){
         if(
         reverse("TESTING").equals("GNITSET") &&
-        reverse("KGMAI").equals("IAMGK") &&
+        reverse("KGMAI").equals("IAMGK") && 
+        reverse("+").equals("+") && 
         reverse("").equals("")
         ) return true;
         else return false;
