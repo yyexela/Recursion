@@ -4,6 +4,31 @@ public class Recursion{
         System.out.println("Testing fibonacci: " + testFibonacci());
         System.out.println("Testing reverse: " + testReverse());
         System.out.println("Testing binarySearch: " + testBinarySearch());
+        System.out.println("Testing padjenacci: " + testPadjenacci());
+    }
+
+    public static boolean testPadjenacci(){
+        if(
+        padjenacci(1) == 1 && 
+        padjenacci(2) == 2 && 
+        padjenacci(3) == 3 && 
+        padjenacci(4) == 6 && 
+        padjenacci(5) == 31 && 
+        padjenacci(6) == 934 && 
+        padjenacci(7) == 871431
+        ) return true;
+        else return false;
+    }
+
+    public static long padjenacci(long n){
+        //Base case
+        if(n < 1) return 0;
+        else if(n == 1) return 1;
+        else if(n == 2) return 2;
+        else if(n == 3) return 3;
+        
+        //Iterative
+        return (padjenacci(n-1) * padjenacci(n-1) - padjenacci(n-2) * padjenacci(n-2) + padjenacci(n-3) * padjenacci(n-3));
     }
 
     public static boolean testFibonacci(){
@@ -71,29 +96,56 @@ public class Recursion{
         //int end is not inclusive, int start is inclusive
         int center = start + ((end - start) / 2);
 
-        //System.out.println("num: " + num + ", start: " + start + ", end: " + end + ", center: " + center);
-        
         //Base case
-        //System.out.println("Checking center: nums[" + center + "]: " + nums[center]);
         if(nums[center] == num){
-            //System.out.println("num(" + num + ") == nums[" + center + "]: " + nums[center]);
             return true;
         }
 
         if(end - start <= 1){
-            //System.out.println("num(" + num + ") not found in nums[]");
             return false;
         }
 
         //Iterative
         if(num > nums[center]){
-            //System.out.println("num(" + num + ") > nums[" + center + "]: " + nums[center]);
             return binarySearch(nums, num, center, end);
         } 
-        else if(num < nums[center]){
-            //System.out.println("num(" + num + ") < nums[" + center + "]: " + nums[center]);
-            return binarySearch(nums, num, start, center);
-        }
+        else if(num < nums[center]) return binarySearch(nums, num, start, center);
         return false;
     }
 }
+
+
+/**Binary Search with Debug Print Statements */
+/*
+public static boolean binarySearch(int[] nums, int num, int start, int end){
+    if(nums.length == 0) return false;
+
+    int end is not inclusive, int start is inclusive
+    int center = start + ((end - start) / 2);
+
+    System.out.println("num: " + num + ", start: " + start + ", end: " + end + ", center: " + center);
+    
+    //Base case
+    System.out.println("Checking center: nums[" + center + "]: " + nums[center]);
+    if(nums[center] == num){
+        System.out.println("num(" + num + ") == nums[" + center + "]: " + nums[center]);
+        return true;
+    }
+
+    if(end - start <= 1){
+        System.out.println("num(" + num + ") not found in nums[]");
+        return false;
+    }
+
+    //Iterative
+    if(num > nums[center]){
+        System.out.println("num(" + num + ") > nums[" + center + "]: " + nums[center]);
+        return binarySearch(nums, num, center, end);
+    } 
+    else if(num < nums[center]){
+        System.out.println("num(" + num + ") < nums[" + center + "]: " + nums[center]);
+        return binarySearch(nums, num, start, center);
+    }
+    return false;
+}
+*/
